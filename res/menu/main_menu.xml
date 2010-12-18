@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android"
+>
+	<item
+		android:title="@string/add_player"
+		android:id="@+id/menu_add_player"
+		android:icon="@drawable/ic_add"
+	/>
+	<item
+		android:title="@string/quit"
+		android:id="@+id/menu_quit"
+		android:icon="@drawable/ic_quit"
+	/>
+</menu>

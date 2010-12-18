@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">硅谷华人篮球协会-记分板v0.3</string>
+<string name="btn_setup_done">比赛设置好了</string>
+<string name="hometeam_name_hint">第一个参赛队伍名称</string>
+<string name="spin_prompt_hometeam">主场球队</string>
+<string-array name="team_name_array"><item>青龙</item>
+<item>临时工</item>
+<item>朱雀</item>
+<item>玄武</item>
+<item>第九</item>
+<item>伯克利</item>
+</string-array>
+<string name="spin_prompt_awayteam">客场球队</string>
+<string-array name="team_color_array"><item>深色</item>
+<item>白色</item>
+</string-array>
+<string name="spin_prompt_hometeam_color">主队队服颜色</string>
+<string name="spin_prompt_awayteam_color">客队队服颜色</string>
+<string name="hometeam">主队</string>
+<string name="awayteam">客队</string>
+<string name="game">比赛</string>
+<string name="hometeam_player">主队队员</string>
+<string name="awayteam_player">客队队员</string>
+<string-array name="qinglong_player"><item>吕健</item>
+<item>李钥</item>
+<item>邓少伟</item>
+<item>刘晓琦</item>
+<item>王帷任</item>
+<item>姚真</item>
+<item>阎震宇</item>
+<item>John Wan</item>
+
+
+
+<item>Terry 郭</item>
+<item>何日晖</item>
+<item>朱腾辉</item>
+</string-array>
+
+<string name="game_quarter">4节，每节12分钟</string>
+<string name="game_quarter_length">节间休息30秒，中场休息2分钟</string>
+<string name="game_foulout">队员个人5次犯规罚出场外，2次技术犯规罚出场外</string>
+<string name="game_teamfoul_threshold_1">全队半场犯规7次开始1+1罚球</string>
+<string name="game_teamfoul_threshold_2">全队半场10次犯规开始2次罚球</string>
+<string name="game_stopwatch">第四节最后两分钟，分差在10分以内，每球停表</string>
+
+<string-array name="linshigong_player"><item>吴海文</item>
+<item>王晋</item>
+<item>梁斌</item>
+<item>赖彭杰</item>
+<item>Michael高</item>
+<item>张燕晨</item>
+<item>Daniel白</item>
+<item>程晓昌</item>
+<item>章程</item>
+<item>刘江侠</item>
+
+
+</string-array>
+<string-array name="zhuque_player"><item>张弓</item>
+<item>邹耀中</item>
+
+<item>左涛</item>
+
+
+
+
+
+<item>秦汉</item>
+<item>许辉</item>
+<item>李风华</item>
+<item>尹继科</item>
+<item>金翔宇</item>
+<item>刘宜晋</item>
+</string-array>
+<string-array name="xuanwu_player"><item>周英</item>
+<item>樊锐锋</item>
+<item>孙世双</item>
+<item>黎巍</item>
+<item>孙大威</item>
+<item>蒋剑虹</item>
+<item>Sean</item>
+<item>Jerry</item>
+<item>赵燚</item>
+<item>赵冰</item>
+<item>姜山</item>
+
+<item>玉林</item>
+</string-array>
+<string-array name="dijiu_player"><item>于冰</item>
+<item>俞凌峰</item>
+<item>黄志勇</item>
+<item>陈育林</item>
+<item>苗江波</item>
+
+<item>李涛</item>
+<item>安依然</item>
+<item>吴立其</item>
+<item>傅甄</item>
+<item>唐庆</item>
+<item>Tony</item>
+<item>Jimmy</item>
+<item>马志启</item>
+</string-array>
+<string-array name="berkeley_player"><item>沈灏</item>
+<item>刘志</item>
+<item>曾立</item>
+<item>曹思未</item>
+<item>ZhouZhen</item>
+<item>吴海明</item>
+<item>钟情</item>
+<item>马必武</item>
+<item>Yi Yaofan</item>
+<item>赵阳</item>
+</string-array>
+<string name="quit">退出</string>
+<string name="err_same_color">两队的队服颜色相同</string>
+<string name="err_same_team">参赛的两只队伍选择了同一个队伍</string>
+<string name="err_hometeam_starting_lineup_not_full">主队先发不全</string>
+<string name="err_awayteam_starting_lineup_not_full">客队先发不全</string>
+<string name="start">开始比赛</string>
+<string name="game_timeout">每场比赛每队有三次暂停</string>
+<string name="game_overtime">加时赛，每个2分钟，每球停表</string>
+<color name="cl_score_tie">#FFFF00</color>
+<color name="cl_score_lead">#FF0000</color>
+<color name="cl_score_behind">#00FF00</color>
+<string name="timeout">暂停</string>
+<string name="sub">换人</string>
+<string name="foul">犯规</string>
+<string name="shoot1">一分投篮</string>
+<string name="shoot2">二分投篮</string>
+<string name="shoot3">三分投篮</string>
+<string name="turnover">失误</string>
+<string name="ab_timeout">停</string>
+<string name="ab_foul">规</string>
+<string name="shoot">投篮</string>
+<string name="made">进球</string>
+<string name="miss">偏出</string>
+
+
+<string name="rebound_none">无人获得篮板球</string>
+<string name="rebound">篮板球</string>
+<string name="rebound_f">前场篮板</string>
+<string name="rebound_b">后场篮板</string>
+<string name="foulout">犯规达到5次，罚出场外</string>
+<string name="sub_off">换下场</string>
+<string name="sub_on">换上场</string>
+<string name="stat_home">主队统计</string>
+<string name="ab_1p">1分</string>
+<string name="ab_name">名</string>
+<string name="ab_2p">2分</string>
+<string name="ab_3p">3分</string>
+<string name="ab_p">分</string>
+<string name="ab_rb">板</string>
+<string name="ab_f">规</string>
+<string name="ab_to">误</string>
+<string name="stat_away">客队统计</string>
+<string name="add_player">添加队员</string>
+<string name="err_input_player_name">请输入队员名字</string>
+<string name="ab_ass">助</string>
+<string name="ab_steal">断</string>
+<string name="go_on">继续比赛</string>
+<string name="ref_timeout">裁判暂停</string>
+<string name="undo">取消输入</string>
+<string name="stat_chart">图表统计</string>
+<string name="err_not_implement">该功能未实现</string>
+<string name="steal">抢断</string>
+<string name="assist">助攻</string>
+</resources>

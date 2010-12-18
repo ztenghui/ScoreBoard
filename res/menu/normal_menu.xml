@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:icon="@drawable/ic_undo_action" android:title="@string/undo" android:id="@+id/menu_undo_action"></item><item android:icon="@drawable/ic_ref_timeout" android:title="@string/ref_timeout" android:id="@+id/menu_ref_timeout"></item><item android:icon="@drawable/ic_chart" android:title="@string/stat_chart" android:id="@+id/menu_chart"></item><item android:icon="@drawable/ic_stat" android:id="@+id/menu_home_stat" android:title="@string/stat_home"></item>
+<item android:icon="@drawable/ic_stat" android:id="@+id/menu_away_stat" android:title="@string/stat_away"></item><item android:icon="@drawable/ic_quit" android:id="@+id/menu_quit" android:title="@string/quit"></item>
+
+
+
+
+</menu>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+>
+	<ImageView
+		android:id="@+id/shoot_player_img"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+	/>
+	<TextView
+		android:id="@+id/shoot_player_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/shoot_player_img"
+		android:layout_centerHorizontal="true"
+	/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_below="@id/shoot_player_name"
+	>
+		<Button
+			android:id="@+id/btn_shoot_made"
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/made"
+			android:textSize="24px"
+		/>
+		<Button
+			android:id="@+id/btn_shoot_miss"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/miss"
+			android:textSize="24px"
+		/>
+	</LinearLayout>
+</RelativeLayout>
