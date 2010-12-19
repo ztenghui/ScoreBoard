@@ -313,15 +313,14 @@ public class Game
 	{
 		List<Action> result = new ArrayList<Action>();
 		int size = _actions.size();
-		if (size > 0)
-			result.add(_actions.get(size-1));
-		if (size > 1)
-			result.add(_actions.get(size-2));
-		if (size > 2)
-			result.add(_actions.get(size-3));
+		for (int i = 0; i < size; i ++)
+		{
+			result.add(_actions.get(size-1-i));
+		}
 		return result;
 	}
 	
+
 	public int getFoulTimes(String name)
 	{
 		int result = 0;
