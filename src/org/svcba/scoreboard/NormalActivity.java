@@ -41,6 +41,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.AdapterView;
 
 public class NormalActivity extends Activity
 {
@@ -58,11 +60,13 @@ public class NormalActivity extends Activity
 	private static final int REQUEST_SUB_ON = 11;
 	private static final int REQUEST_STEAL = 12;
 	private static final int REQUEST_ASSIST = 13;
-	
+
 	private Game _game;
 	private Timer _timer = new Timer(true);
+
 	private Handler _handler = new Handler()
 	{
+		@Override
 		public void handleMessage(Message msg)
 		{
 			switch (msg.what)
@@ -76,19 +80,20 @@ public class NormalActivity extends Activity
 			super.handleMessage(msg);
 		}
 	};
-	
+
 	private TimerTask _timertask = new TimerTask()
 	{
 
+		@Override
 		public void run()
 		{
 			Message msg = new Message();
 			msg.what = 1;
 			_handler.sendMessage(msg);
 		}
-		
+
 	};
-	
+
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -96,17 +101,17 @@ public class NormalActivity extends Activity
 
 		SVCBAApp app = (SVCBAApp)getApplicationContext();
 		_game = app.getGame();
-		
+
 		TextView tx = (TextView)findViewById(R.id.tx_hometeam_name);
 		tx.setText(_game.getHomeTeam().getName());
-		
+
 		tx = (TextView)findViewById(R.id.tx_awayteam_name);
 		tx.setText(_game.getAwayTeam().getName());
-		
+
 		updateScore();
 		updateTimeoutFoul();
 		updateTime();
-		
+
 		Button btn = (Button)findViewById(R.id.btn_timeout);
 		btn.setOnClickListener(new OnClickListener(){
 			public void onClick(View v)
@@ -123,7 +128,7 @@ public class NormalActivity extends Activity
 				startActivityForResult(intent, REQUEST_SUB_OFF);
 			}
 		});
-		
+
 		btn = (Button)findViewById(R.id.btn_foul);
 		btn.setOnClickListener(new OnClickListener(){
 			public void onClick(View v)
@@ -148,7 +153,7 @@ public class NormalActivity extends Activity
 				Intent intent = new Intent(view.getContext(), ShootPlayerActivity.class);
 				startActivityForResult(intent, REQUEST_SHOOT_1_PLAYER);
 			}
-			
+
 		});
 		btn = (Button)findViewById(R.id.btn_shoot2);
 		btn.setOnClickListener(new OnClickListener(){
@@ -158,7 +163,7 @@ public class NormalActivity extends Activity
 				Intent intent = new Intent(view.getContext(), ShootPlayerActivity.class);
 				startActivityForResult(intent, REQUEST_SHOOT_2_PLAYER);
 			}
-			
+
 		});
 		btn = (Button)findViewById(R.id.btn_shoot3);
 		btn.setOnClickListener(new OnClickListener(){
@@ -168,18 +173,18 @@ public class NormalActivity extends Activity
 				Intent intent = new Intent(view.getContext(), ShootPlayerActivity.class);
 				startActivityForResult(intent, REQUEST_SHOOT_3_PLAYER);
 			}
-			
+
 		});
 		_timer.schedule(_timertask, 1000, 1000);
 	}
-	
+
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.normal_menu, menu);
 		return true;
 	}
-	
+
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		switch (item.getItemId())
@@ -208,7 +213,11 @@ public class NormalActivity extends Activity
 				showChart();
 				break;
 			case R.id.menu_undo_action:
-				Toast.makeText(this, R.string.err_not_implement, Toast.LENGTH_LONG).show();
+				//Toast.makeText(this, R.string.err_not_implement, Toast.LENGTH_LONG).show();
+				_game.undoAction();
+				updateAction();
+				updateScore();
+				// TOTO update foul how?
 				break;
 			default:
 				return super.onOptionsItemSelected(item);
@@ -269,7 +278,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_SUB_ON)
@@ -314,11 +323,13 @@ public class NormalActivity extends Activity
 				if (team == ShootPlayerActivity.RESULT_HOMETEAM)
 				{
 					action.setPlayer(_game.getHomeTeam().getOnCourt().get(pos));
+					action.setSide(Action.HOME);
 					_game.addHomeFoul(1);
 				}
 				else if (team == ShootPlayerActivity.RESULT_AWAYTEAM)
 				{
 					action.setPlayer(_game.getAwayTeam().getOnCourt().get(pos));
+					action.setSide(Action.AWAY);
 					_game.addAwayFoul(1);
 				}
 				_game.addAction(action);
@@ -335,7 +346,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 
 		}
@@ -371,7 +382,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 
 		}
@@ -400,7 +411,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 
 		}
@@ -440,7 +451,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_SHOOT_2_PLAYER)
@@ -468,7 +479,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_SHOOT_2_RESULT)
@@ -510,7 +521,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_SHOOT_3_PLAYER)
@@ -538,7 +549,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_SHOOT_3_RESULT)
@@ -580,7 +591,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_REBOUND)
@@ -612,7 +623,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_STEAL)
@@ -636,7 +647,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 		else if (requestCode == REQUEST_ASSIST)
@@ -660,7 +671,7 @@ public class NormalActivity extends Activity
 			}
 			else
 			{
-				
+
 			}
 		}
 	}
@@ -730,7 +741,7 @@ public class NormalActivity extends Activity
 		tv = (TextView)findViewById(R.id.tx_hometeam_score);
 		tv.setText("" + home);
 		tv.setTextColor(res.getColor(homecolor));
-		
+
 		tv = (TextView)findViewById(R.id.tx_awayteam_score);
 		tv.setText("" + away);
 		tv.setTextColor(res.getColor(awaycolor));
@@ -739,19 +750,35 @@ public class NormalActivity extends Activity
 	{
 		Resources res = getResources();
 		TextView tv;
-		
+
 		tv = (TextView)findViewById(R.id.tx_hometeam_timeout);
 		tv.setText(res.getString(R.string.ab_timeout)+_game.getHomeTimeout());
-		
+
 		tv = (TextView)findViewById(R.id.tx_awayteam_timeout);
 		tv.setText(res.getString(R.string.ab_timeout)+ _game.getAwayTimeout());
-		
+
 		tv = (TextView)findViewById(R.id.tx_hometeam_foul);
 		tv.setText(res.getString(R.string.ab_foul)+_game.getHomeFoul());
-		
+
 		tv = (TextView)findViewById(R.id.tx_awayteam_foul);
 		tv.setText(res.getString(R.string.ab_foul)+_game.getAwayFoul());
 	}
+
+    private class myLongClickListener implements OnItemLongClickListener
+	{
+        public boolean onItemLongClick( AdapterView<?> parent, View view, int position, long id ) 
+        {        	
+            boolean removed = _game.removeActionFromTheEnd(position);            
+            if (!removed)
+            {
+            	Toast.makeText( NormalActivity.this, "ItemClick at item " + position + "can't be remove!", Toast.LENGTH_LONG ).show();
+            }
+            updateAction();
+            updateScore();
+            return false;
+        }
+    }
+
 	private void updateAction()
 	{
 		List<Action> actions = _game.getLastActions();
@@ -835,15 +862,19 @@ public class NormalActivity extends Activity
 			}
 			show.add(action);
 		}
-		
+
 		ListView lv = (ListView)findViewById(R.id.actions);
         SimpleAdapter sa = new SimpleAdapter(this, show,R.layout.action,new String[]{"who","do","what"},new int[]{R.id.action_who,R.id.action_do,R.id.action_what});
         lv.setAdapter(sa);
 
+        myLongClickListener listener = new myLongClickListener();
+        lv.setOnItemLongClickListener( listener ) ;
 	}
+
+
 	public void onBackPressed()
 	{
-		
+
 	}
 	private void showChart()
 	{

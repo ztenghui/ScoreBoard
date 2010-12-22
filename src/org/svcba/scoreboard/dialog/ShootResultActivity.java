@@ -29,6 +29,7 @@ public class ShootResultActivity extends Activity
 		ImageView iv = (ImageView)findViewById(R.id.shoot_player_img);
 		iv.setImageResource((Integer)game.getTempAction().getPlayer().get("avator"));
 		
+		
 		TextView tv = (TextView)findViewById(R.id.shoot_player_name);
 		tv.setText((String)game.getTempAction().getPlayer().get("name"));
 		

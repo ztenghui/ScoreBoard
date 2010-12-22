@@ -123,10 +123,119 @@ public class Game
 	
 	public void undoAction()
 	{
-		if (_actions.size()>0)
+		removeActionFromTheEnd(0);		
+	}
+	// pos from 0 to size-1, and 0 -> size-1.
+	public boolean removeActionFromTheEnd(int pos)
+	{
+		boolean success = false;
+		if (_actions.size()>pos && pos>=0)
 		{
-			_actions.remove(_actions.size()-1);
+			int arrayIndex = _actions.size()-1-pos;
+			Action action = _actions.get(arrayIndex);
+			switch (action.getAction())			
+			{
+				case Action.SHOOT_1:
+					//PlayerStat p = players.get((String)action.getPlayer().get("name"));
+					//if (p == null)
+					//	break;
+					if (action.getResult() == Action.MADE)
+					{
+						if( action.getSide() == Action.HOME)
+						{
+							this.addHomeScore(-1);
+						}
+						else if ( action.getSide() == Action.AWAY)
+						{
+							this.addAwayScore(-1);
+						}
+					}
+					else if (action.getResult() == Action.MISS)
+					{
+						//Do nothing
+					}
+					break;
+				case Action.SHOOT_2:
+					if (action.getResult() == Action.MADE)
+					{
+						if( action.getSide() == Action.HOME)
+						{
+							this.addHomeScore(-2);
+						}
+						else if ( action.getSide() == Action.AWAY)
+						{
+							this.addAwayScore(-2);
+						}
+					}
+					else if (action.getResult() == Action.MISS)
+					{
+						//Do nothing
+					}
+					break;
+				case Action.SHOOT_3:
+					if (action.getResult() == Action.MADE)
+					{
+						if( action.getSide() == Action.HOME)
+						{
+							this.addHomeScore(-3);
+						}
+						else if ( action.getSide() == Action.AWAY)
+						{
+							this.addAwayScore(-3);
+						}
+					}
+					else if (action.getResult() == Action.MISS)
+					{
+						//Do nothing
+					}
+					break;
+/*				case Action.REBOUND_F:
+					p = players.get((String)action.getPlayer().get("name"));
+					if (p == null)
+						break;
+					p.addRbF();
+					break;
+				case Action.REBOUND_B:
+					p = players.get((String)action.getPlayer().get("name"));
+					if (p == null)
+						break;
+					p.addRbB();
+					break; */
+				case Action.FOUL:
+					// TODO : How to deal with Player 's foul??
+					if( action.getSide() == Action.HOME)
+					{
+						this.addHomeFoul(-1);
+					}
+					else if ( action.getSide() == Action.AWAY)
+					{
+						this.addAwayFoul(-1);
+					}
+					break;
+/*				case Action.TURNOVER:
+					p = players.get((String)action.getPlayer().get("name"));
+					if (p == null)
+						break;
+					p.addTO();
+					break;
+				case Action.ASSIST:
+					p = players.get((String)action.getPlayer().get("name"));
+					if (p == null)
+						break;
+					p.addAssist();
+					break;
+				case Action.STEAL:
+					p = players.get((String)action.getPlayer().get("name"));
+					if (p == null)
+						break;
+					p.addSteal();
+					break; */
+				default:
+			}
+			_actions.remove(arrayIndex);
+			success = true;
 		}
+		return success;
 	}
 	
 	public void setHomeColor(int color)

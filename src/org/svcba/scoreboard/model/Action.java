@@ -4,8 +4,10 @@ import java.util.Map;
 
 public class Action
 {
+	//.getResult
 	static final public int MISS = 0;
 	static final public int MADE = 1;
+	
 	static final public int TIMEOUT = 0;
 	static final public int SUB_OFF = 1;
 	static final public int SUB_ON = 2;
@@ -18,7 +20,7 @@ public class Action
 	static final public int REBOUND_B = 9;
 	static final public int ASSIST = 10;
 	static final public int STEAL = 11;
-	
+	// getSide()
 	static final public int HOME = 0;
 	static final public int AWAY = 1;
 	
