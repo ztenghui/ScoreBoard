@@ -1,7 +1,13 @@
 package org.svcba.scoreboard.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.svcba.scoreboard.NormalActivity;
+
+import android.widget.Toast;
 
 public class Game
 {
@@ -128,17 +134,41 @@ public class Game
 	// pos from 0 to size-1, and 0 -> size-1.
 	public boolean removeActionFromTheEnd(int pos)
 	{
-		boolean success = false;
+		boolean result = false;   // false means fail.
+		
+		Map<String, PlayerStat> players = new HashMap<String, PlayerStat>();
+		
+		
 		if (_actions.size()>pos && pos>=0)
 		{
-			int arrayIndex = _actions.size()-1-pos;
+			// The display order is the reserve of recording order.
+			int arrayIndex = _actions.size()-1-pos;			
 			Action action = _actions.get(arrayIndex);
+			/*
+			Team team = null;
+			if (action.getSide() == Action.HOME)
+			{
+				team = getHomeTeam();
+			}
+			else if (action.getSide() == Action.AWAY)
+			{
+				team = getAwayTeam();
+			}
+			else
+			{
+				return result;
+			}
+			
+			for (Map<String, Object> player : team.getAllPlayers())
+			{
+				PlayerStat p = new PlayerStat();
+				p.setName((String)player.get("name"));
+				players.put((String)player.get("name"), p);
+			}
+			*/
 			switch (action.getAction())			
 			{
-				case Action.SHOOT_1:
-					//PlayerStat p = players.get((String)action.getPlayer().get("name"));
-					//if (p == null)
-					//	break;
+				case Action.SHOOT_1:					
 					if (action.getResult() == Action.MADE)
 					{
 						if( action.getSide() == Action.HOME)
@@ -189,6 +219,16 @@ public class Game
 						//Do nothing
 					}
 					break;
+				case Action.TIMEOUT:
+					if( action.getSide() == Action.HOME)
+					{
+						this.addHomeTimeout(-1);
+					}
+					else if ( action.getSide() == Action.AWAY)
+					{
+						this.addHomeTimeout(-1);
+					}
+					break;
 /*				case Action.REBOUND_F:
 					p = players.get((String)action.getPlayer().get("name"));
 					if (p == null)
@@ -202,9 +242,12 @@ public class Game
 					p.addRbB();
 					break; */
 				case Action.FOUL:
-					// TODO : How to deal with Player 's foul??
+					// Q: How to deal with Player 's foul??
+					// A: for the final stat, it will go through all the action, since the action has been removed the personal data will be correct at that time. 
+					// TODO: need to check the 5 fouls stuff, that is also taken care of, since it will go through the action too.
 					if( action.getSide() == Action.HOME)
 					{
+						//p = players.get((String)action.getPlayer().get("name"));
 						this.addHomeFoul(-1);
 					}
 					else if ( action.getSide() == Action.AWAY)
@@ -231,11 +274,13 @@ public class Game
 					p.addSteal();
 					break; */
 				default:
+					//Do nothing. 
+					break;
 			}
 			_actions.remove(arrayIndex);
-			success = true;
+			result = true;
 		}
-		return success;
+		return result;
 	}
 	
 	public void setHomeColor(int color)
