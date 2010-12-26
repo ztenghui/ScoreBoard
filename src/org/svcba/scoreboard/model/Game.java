@@ -136,36 +136,12 @@ public class Game
 	{
 		boolean result = false;   // false means fail.
 		
-		Map<String, PlayerStat> players = new HashMap<String, PlayerStat>();
-		
-		
 		if (_actions.size()>pos && pos>=0)
 		{
 			// The display order is the reserve of recording order.
 			int arrayIndex = _actions.size()-1-pos;			
 			Action action = _actions.get(arrayIndex);
-			/*
-			Team team = null;
-			if (action.getSide() == Action.HOME)
-			{
-				team = getHomeTeam();
-			}
-			else if (action.getSide() == Action.AWAY)
-			{
-				team = getAwayTeam();
-			}
-			else
-			{
-				return result;
-			}
 			
-			for (Map<String, Object> player : team.getAllPlayers())
-			{
-				PlayerStat p = new PlayerStat();
-				p.setName((String)player.get("name"));
-				players.put((String)player.get("name"), p);
-			}
-			*/
 			switch (action.getAction())			
 			{
 				case Action.SHOOT_1:					
@@ -229,18 +205,6 @@ public class Game
 						this.addHomeTimeout(-1);
 					}
 					break;
-/*				case Action.REBOUND_F:
-					p = players.get((String)action.getPlayer().get("name"));
-					if (p == null)
-						break;
-					p.addRbF();
-					break;
-				case Action.REBOUND_B:
-					p = players.get((String)action.getPlayer().get("name"));
-					if (p == null)
-						break;
-					p.addRbB();
-					break; */
 				case Action.FOUL:
 					// Q: How to deal with Player 's foul??
 					// A: for the final stat, it will go through all the action, since the action has been removed the personal data will be correct at that time. 
@@ -255,24 +219,7 @@ public class Game
 						this.addAwayFoul(-1);
 					}
 					break;
-/*				case Action.TURNOVER:
-					p = players.get((String)action.getPlayer().get("name"));
-					if (p == null)
-						break;
-					p.addTO();
-					break;
-				case Action.ASSIST:
-					p = players.get((String)action.getPlayer().get("name"));
-					if (p == null)
-						break;
-					p.addAssist();
-					break;
-				case Action.STEAL:
-					p = players.get((String)action.getPlayer().get("name"));
-					if (p == null)
-						break;
-					p.addSteal();
-					break; */
+
 				default:
 					//Do nothing. 
 					break;
