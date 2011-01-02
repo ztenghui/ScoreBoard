@@ -168,4 +168,7 @@
 <string name="err_not_implement">该功能未实现</string>
 <string name="steal">抢断</string>
 <string name="assist">助攻</string>
+<string name="confirm">确认</string>
+<string name="cancel">取消</string>
+<string name="confirm_action_remove">确定要删除吗?</string>
 </resources>
