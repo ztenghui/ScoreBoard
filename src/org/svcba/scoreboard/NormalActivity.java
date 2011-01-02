@@ -21,6 +21,7 @@ import org.svcba.scoreboard.dialog.ShootResultActivity;
 import org.svcba.scoreboard.dialog.StatActivity;
 import org.svcba.scoreboard.dialog.StealActivity;
 import org.svcba.scoreboard.dialog.TimeoutActivity;
+import org.svcba.scoreboard.dialog.ActionRemoveActivity;
 import org.svcba.scoreboard.model.Action;
 import org.svcba.scoreboard.model.Game;
 
@@ -60,7 +61,7 @@ public class NormalActivity extends Activity
 	private static final int REQUEST_SUB_ON = 11;
 	private static final int REQUEST_STEAL = 12;
 	private static final int REQUEST_ASSIST = 13;
-
+	private static final int CONFIRM_ACTION_REMOVE = 14;
 	private Game _game;
 	private Timer _timer = new Timer(true);
 
@@ -214,10 +215,9 @@ public class NormalActivity extends Activity
 				break;
 			case R.id.menu_undo_action:
 				//Toast.makeText(this, R.string.err_not_implement, Toast.LENGTH_LONG).show();
-				_game.undoAction();
-				updateAction();
-				updateScore();
-				// TOTO update foul how?
+				intent = new Intent(this, ActionRemoveActivity.class);
+				intent.putExtra("pos2Remove", 0);  // 0 is the latest action
+				startActivityForResult(intent, CONFIRM_ACTION_REMOVE);
 				break;
 			default:
 				return super.onOptionsItemSelected(item);
@@ -227,7 +227,26 @@ public class NormalActivity extends Activity
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == REQUEST_TIMEOUT_TEAM)
+		if (requestCode == CONFIRM_ACTION_REMOVE)
+		{
+			int pos2Remove = data.getIntExtra("pos2Remove", 0);
+			if (resultCode == RESULT_OK)
+			{			
+				Toast.makeText( this, "Confirm revmoal at item " + pos2Remove, Toast.LENGTH_LONG ).show();
+				boolean removed = _game.removeActionFromTheEnd(pos2Remove);            
+				if (!removed)
+				{
+					Toast.makeText( this, "ItemClick at item " + pos2Remove + "can't be remove!", Toast.LENGTH_LONG ).show();
+		        }
+				updateAction();
+				updateScore();
+			}
+			else if(resultCode == RESULT_CANCELED)
+			{
+				Toast.makeText( this, "Cancel Removal at item " + pos2Remove, Toast.LENGTH_LONG ).show();
+			}
+		}
+		else if (requestCode == REQUEST_TIMEOUT_TEAM)
 		{
 			if (resultCode == RESULT_OK)
 			{
@@ -767,14 +786,12 @@ public class NormalActivity extends Activity
     private class myLongClickListener implements OnItemLongClickListener
 	{
         public boolean onItemLongClick( AdapterView<?> parent, View view, int position, long id ) 
-        {        	
-            boolean removed = _game.removeActionFromTheEnd(position);            
-            if (!removed)
-            {
-            	Toast.makeText( NormalActivity.this, "ItemClick at item " + position + "can't be remove!", Toast.LENGTH_LONG ).show();
-            }
-            updateAction();
-            updateScore();
+        {
+        	// Try to open up the action removal dialog/activity .
+        	// Then transfer the result out.
+        	Intent intent = new Intent(view.getContext(), ActionRemoveActivity.class);
+        	intent.putExtra("pos2Remove", position);
+			startActivityForResult(intent, CONFIRM_ACTION_REMOVE);
             return false;
         }
     }
