@@ -36,10 +36,12 @@ public class StatActivity extends Activity
 		ListView lv = (ListView)findViewById(R.id.stat_chart);
 		SimpleAdapter sa = new SimpleAdapter(this, getStat(side),R.layout.stat_row,new String[]{"name","1p", "2p", "3p", "p", "rb","ass","stl", "f", "to"},new int[]{R.id.stat_name,R.id.stat_1p,R.id.stat_2p,R.id.stat_3p,R.id.stat_p,R.id.stat_rb,R.id.stat_ass,R.id.stat_stl,R.id.stat_f,R.id.stat_to});
 		lv.setAdapter(sa);
+				
 }
 	
 	private List<Map<String, Object>> getStat(int side)
 	{
+		String finalString = new String();
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		Game game = ((SVCBAApp)getApplicationContext()).getGame();
 		Team team = null;
@@ -157,6 +159,15 @@ public class StatActivity extends Activity
 			player.put("stl", p.getSteal());
 			result.add(player);
 		}
+		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);		 
+        emailIntent.setType("plain/text");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ztenghui@gmail.com"});
+
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "mySubject");
+
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "myBodyText");
+
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 		return result;
 	}
 	public void onBackPressed()

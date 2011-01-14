@@ -44,15 +44,15 @@ public class PlayerStat
 	
 	public String get1P()
 	{
-		return ""+_1p_made+"/"+_1p_shoot;
+		return ""+_1p_made+","+_1p_shoot;
 	}
 	public String get2P()
 	{
-		return ""+_2p_made+"/"+_2p_shoot;
+		return ""+_2p_made+","+_2p_shoot;
 	}
 	public String get3P()
 	{
-		return ""+_3p_made+"/"+_3p_shoot;
+		return ""+_3p_made+","+_3p_shoot;
 	}
 	public String getP()
 	{
@@ -60,7 +60,7 @@ public class PlayerStat
 	}
 	public String getRB()
 	{
-		return ""+_rb_f+"/"+_rb_b;
+		return ""+_rb_f+","+_rb_b;
 	}
 	public String getF()
 	{
