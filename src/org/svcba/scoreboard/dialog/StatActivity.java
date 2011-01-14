@@ -209,7 +209,7 @@ public class StatActivity extends Activity
 	    
 		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);		 
         emailIntent.setType("plain/text");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ztenghui@gmail.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ztenghui@gmail.com;biomemsgao@gmail.com;greatsvcba@gmail.com"});
 
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Game Result " + getDateTime());
 
