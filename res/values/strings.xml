@@ -183,6 +183,7 @@
 <string name="shoot">投篮</string>
 <string name="made">进球</string>
 <string name="miss">偏出</string>
+<string name="notimplemented">此功能尚未实现</string>
 
 
 <string name="rebound_none">无人获得篮板球</string>

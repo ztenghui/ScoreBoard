@@ -35,16 +35,20 @@ public class ActionRemoveActivity extends Activity {
 		// should merge the code with NormalActivity::updateAction()
 		String realAction = new String();
 		Resources res = getResources();
+		boolean notImplemnted = false;
 		switch (displayAction.getAction())
 		{
 			case Action.TIMEOUT:				
-				realAction = "Can't delete yet, please redo";				
+				realAction = res.getString(R.string.notimplemented);
+				notImplemnted = true;
 				break;
 			case Action.SUB_OFF:				
-				realAction = "Can't delete yet, please redo";				
+				realAction = res.getString(R.string.notimplemented);
+				notImplemnted = true;
 				break;
 			case Action.SUB_ON:				
-				realAction = "Can't delete yet, please redo";				
+				realAction = res.getString(R.string.notimplemented);
+				notImplemnted = true;
 				break;
 			case Action.FOUL:				
 				realAction = res.getString(R.string.foul);				
@@ -74,11 +78,18 @@ public class ActionRemoveActivity extends Activity {
 				realAction = res.getString(R.string.assist);				
 				break;
 			default:
+				break;
 		}
 		
 		TextView textAction = (TextView) findViewById(R.id.action_to_remove);
-		textAction.setText((CharSequence) displayAction.getPlayer().get("name") + "  " + realAction);
-		
+		if (!notImplemnted)
+		{
+			textAction.setText((CharSequence) displayAction.getPlayer().get("name") + "  " + realAction);
+		}
+		else
+		{
+			textAction.setText(realAction);
+		}
 		// Show the buttons
 		Button btn = (Button) findViewById(R.id.btn_confirm_remove);
 

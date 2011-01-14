@@ -232,7 +232,7 @@ public class NormalActivity extends Activity
 			int pos2Remove = data.getIntExtra("pos2Remove", 0);
 			if (resultCode == RESULT_OK)
 			{			
-				Toast.makeText( this, "Confirm revmoal at item " + pos2Remove, Toast.LENGTH_LONG ).show();
+				//Toast.makeText( this, "Confirm revmoal at item " + pos2Remove, Toast.LENGTH_LONG ).show();
 				boolean removed = _game.removeActionFromTheEnd(pos2Remove);            
 				if (!removed)
 				{
@@ -243,7 +243,7 @@ public class NormalActivity extends Activity
 			}
 			else if(resultCode == RESULT_CANCELED)
 			{
-				Toast.makeText( this, "Cancel Removal at item " + pos2Remove, Toast.LENGTH_LONG ).show();
+				//Toast.makeText( this, "Cancel Removal at item " + pos2Remove, Toast.LENGTH_LONG ).show();
 			}
 		}
 		else if (requestCode == REQUEST_TIMEOUT_TEAM)
