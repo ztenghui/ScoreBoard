@@ -16,7 +16,7 @@ public class Game
 	static final public int GAME_OVER = 2;
 	static final public int COLOR_DARK = 1;
 	static final public int COLOR_WHITE = 2;
-	static final public int MIN_PER_QTR = 2;
+	static final public int MIN_PER_QTR = 12;
 	private Team _hometeam;
 	private Team _awayteam;
 	private List<Action> _actions;
