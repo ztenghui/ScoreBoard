@@ -374,6 +374,32 @@ public class ScoreBoard extends TabActivity {
     	}
     	_roster.addTeam(team);
     	
+    	team = new Team();
+    	team.setName(res.getStringArray(R.array.team_name_array)[6]);
+    	players = res.getStringArray(R.array.sjsu_player);
+    	for(int i = 0; i < players.length; i++)
+    	{
+    		Map<String, Object> player = new HashMap<String, Object>();
+    		player.put("name", players[i]);
+    		player.put("number", i+1);
+    		player.put("avator", R.drawable.avator);
+    		team.addPlayer(player);
+    	}
+    	_roster.addTeam(team);
+    	
+    	team = new Team();
+    	team.setName(res.getStringArray(R.array.team_name_array)[7]);
+    	players = res.getStringArray(R.array.titan_player);
+    	for(int i = 0; i < players.length; i++)
+    	{
+    		Map<String, Object> player = new HashMap<String, Object>();
+    		player.put("name", players[i]);
+    		player.put("number", i+1);
+    		player.put("avator", R.drawable.avator);
+    		team.addPlayer(player);
+    	}
+    	_roster.addTeam(team);
+    	
     }
     
 }

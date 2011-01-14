@@ -916,11 +916,11 @@ public class NormalActivity extends Activity
 			int t = 0;
 			if (q <=4)
 			{
-				t = 12*60 - m + (q-1)*12*60;
+				t = Game.MIN_PER_QTR*60 - m + (q-1)*Game.MIN_PER_QTR*60;
 			}
 			else
 			{
-				t = 2*60 - m + (q - 4 -1)*2*60 + 4 * 12 * 60;
+				t = 2*60 - m + (q - 4 -1)*2*60 + 4 * Game.MIN_PER_QTR * 60;
 			}
 			if (t/60 > time)
 			{

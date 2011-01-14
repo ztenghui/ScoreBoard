@@ -16,6 +16,7 @@ public class Game
 	static final public int GAME_OVER = 2;
 	static final public int COLOR_DARK = 1;
 	static final public int COLOR_WHITE = 2;
+	static final public int MIN_PER_QTR = 2;
 	private Team _hometeam;
 	private Team _awayteam;
 	private List<Action> _actions;
@@ -51,7 +52,7 @@ public class Game
 		
 		_quarter = 1;
 		_ot = 0;
-		_time = 12*60;
+		_time = MIN_PER_QTR*60;
 		_timeout = 0;
 		_status = 0;
 		_ref_timeout = false;
@@ -288,14 +289,14 @@ public class Game
 			if (_quarter == 1)
 			{
 				_quarter = 2;
-				_time = 12 * 60;
+				_time = MIN_PER_QTR * 60;
 				_timeout = 30;
 				_status = 1;
 			}
 			else if (_quarter == 2)
 			{
 				_quarter = 3;
-				_time = 12*60;
+				_time = MIN_PER_QTR*60;
 				_timeout = 2*60;
 				_status = 1;
 				_homefoul = 0;
@@ -304,7 +305,7 @@ public class Game
 			else if (_quarter == 3)
 			{
 				_quarter = 4;
-				_time = 12*60;
+				_time = MIN_PER_QTR*60;
 				_timeout = 30;
 				_status = 1;
 			}

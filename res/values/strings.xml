@@ -11,6 +11,8 @@
 <item>玄武</item>
 <item>第九</item>
 <item>伯克利</item>
+<item>SJSU</item>
+<item>泰坦</item>
 </string-array>
 <string name="spin_prompt_awayteam">客场球队</string>
 <string-array name="team_color_array"><item>深色</item>
@@ -23,20 +25,18 @@
 <string name="game">比赛</string>
 <string name="hometeam_player">主队队员</string>
 <string name="awayteam_player">客队队员</string>
-<string-array name="qinglong_player"><item>吕健</item>
-<item>李钥</item>
-<item>邓少伟</item>
-<item>刘晓琦</item>
-<item>王帷任</item>
-<item>姚真</item>
+<string-array name="qinglong_player"><item>李玥</item>
+<item>吕建</item>
+<item>大壮</item>
+<item>John</item>
+<item>Terry</item>
+<item>孙世双</item>
 <item>阎震宇</item>
-<item>John Wan</item>
-
-
-
-<item>Terry 郭</item>
-<item>何日晖</item>
+<item>邓少伟</item>
 <item>朱腾辉</item>
+<item>章俊良</item>
+<item>何日晖</item>
+<item>青龙</item>
 </string-array>
 
 <string name="game_quarter">4节，每节12分钟</string>
@@ -46,74 +46,119 @@
 <string name="game_teamfoul_threshold_2">全队半场10次犯规开始2次罚球</string>
 <string name="game_stopwatch">第四节最后两分钟，分差在10分以内，每球停表</string>
 
-<string-array name="linshigong_player"><item>吴海文</item>
+<string-array name="linshigong_player">
 <item>王晋</item>
-<item>梁斌</item>
-<item>赖彭杰</item>
-<item>Michael高</item>
-<item>张燕晨</item>
-<item>Daniel白</item>
-<item>程晓昌</item>
 <item>章程</item>
 <item>刘江侠</item>
-
+<item>Michael 高</item>
+<item>小赖</item>
+<item>Daniel</item>
+<item>李岩</item>
+<item>Yulin</item>
+<item>姚真</item>
+<item>容鹏</item>
+<item>Joseph</item>
+<item>Liang Bin</item>
+<item>Xiaochang</item>
+<item>临时工</item>
 
 </string-array>
-<string-array name="zhuque_player"><item>张弓</item>
-<item>邹耀中</item>
-
-<item>左涛</item>
-
-
-
-
-
-<item>秦汉</item>
-<item>许辉</item>
+<string-array name="zhuque_player"><item>邹耀中</item>
+<item>张燕晨</item>
 <item>李风华</item>
+<item>赵燚</item>
+<item>马斌</item>
+<item>左涛</item>
+<item>吴子然</item>
+<item>李涛</item>
+<item>秦汉</item>
 <item>尹继科</item>
-<item>金翔宇</item>
+<item>Chang Ko-Fang</item>
+<item>Zhang yue</item>
+<item>张弓 </item>
 <item>刘宜晋</item>
+<item>张玉君</item>
+<item>许晖</item>
+<item>王菊松</item>
+<item>Kevin Wang</item>
+<item>朱雀</item>
 </string-array>
 <string-array name="xuanwu_player"><item>周英</item>
-<item>樊锐锋</item>
-<item>孙世双</item>
 <item>黎巍</item>
-<item>孙大威</item>
-<item>蒋剑虹</item>
-<item>Sean</item>
+<item>阿福</item>
 <item>Jerry</item>
-<item>赵燚</item>
+<item>Sean</item>
+<item>Cliff</item>
 <item>赵冰</item>
 <item>姜山</item>
-
-<item>玉林</item>
+<item>倪永佳</item>
+<item>Jeff</item>
+<item>Billy</item>
+<item>Pokai</item>
+<item>JJ</item>
+<item>大威</item>
+<item>玄武</item>
 </string-array>
-<string-array name="dijiu_player"><item>于冰</item>
-<item>俞凌峰</item>
-<item>黄志勇</item>
-<item>陈育林</item>
-<item>苗江波</item>
-
-<item>李涛</item>
-<item>安依然</item>
-<item>吴立其</item>
-<item>傅甄</item>
-<item>唐庆</item>
-<item>Tony</item>
+<string-array name="dijiu_player"><item>黄志勇</item>
+<item>ET - 蒋良俊</item>
 <item>Jimmy</item>
+<item>苗江波</item>
+<item>Alex</item>
+<item>Tony</item>
+<item>傅甄</item>
+<item>陈育林</item>
+<item>吴立其</item>
+<item>俞凌峰</item>
+<item>安依然</item>
+<item>杨杰</item>
+<item>于冰</item>
+<item>唐庆</item>
 <item>马志启</item>
+<item> 李涛</item>
+<item>第九</item>
 </string-array>
-<string-array name="berkeley_player"><item>沈灏</item>
-<item>刘志</item>
-<item>曾立</item>
-<item>曹思未</item>
-<item>ZhouZhen</item>
-<item>吴海明</item>
-<item>钟情</item>
+<string-array name="berkeley_player"><item>刘志</item>
 <item>马必武</item>
-<item>Yi Yaofan</item>
 <item>赵阳</item>
+<item>曹思未</item>
+<item>钟清</item>
+<item>伊耀樊</item>
+<item>张岩</item>
+<item>周震</item>
+<item>沈灏</item>
+<item>曾立</item>
+<item>Xia Yang</item>
+<item>Cheng Zhenting</item>
+<item>伯克利</item>
+</string-array>
+<string-array name="sjsu_player">
+<item>施凯伦</item>
+<item>Rocky</item>
+<item>唐永翔</item>
+<item>Odom</item>
+<item>BigTom</item>
+<item>蒋启腾</item>
+<item>Henry</item>
+<item>叶騄</item>
+<item>何浩东</item>
+<item>王华</item>
+<item>Jerry</item>
+<item>韩路</item>
+<item>郜萌</item>
+<item>SJSU</item>
+</string-array>
+<string-array name="titan_player"><item>田伯揚</item>
+<item>蔣建宏</item>
+<item>吳曉強</item>
+<item>韓慶勇</item>
+<item>陳俊澤</item>
+<item>吳博文</item>
+<item>簡士智</item>
+<item>林志文</item>
+<item>Kevin</item>
+<item>Will</item>
+<item>王津渝</item>
+<item>泰坦</item>
 </string-array>
 <string name="quit">退出</string>
 <string name="err_same_color">两队的队服颜色相同</string>

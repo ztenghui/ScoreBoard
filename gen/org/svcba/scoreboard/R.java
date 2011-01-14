@@ -13,8 +13,10 @@ public final class R {
         public static final int dijiu_player=0x7f050006;
         public static final int linshigong_player=0x7f050003;
         public static final int qinglong_player=0x7f050002;
+        public static final int sjsu_player=0x7f050008;
         public static final int team_color_array=0x7f050001;
         public static final int team_name_array=0x7f050000;
+        public static final int titan_player=0x7f050009;
         public static final int xuanwu_player=0x7f050005;
         public static final int zhuque_player=0x7f050004;
     }
