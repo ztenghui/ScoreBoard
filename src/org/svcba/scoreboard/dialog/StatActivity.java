@@ -156,11 +156,11 @@ public class StatActivity extends Activity
 		//Title line
 		Resources res = getResources();
 		currentStats += res.getString(R.string.ab_name)+",\t";
-		currentStats += res.getString(R.string.ab_1p)+",\t";
-		currentStats += res.getString(R.string.ab_2p)+",\t";
-		currentStats += res.getString(R.string.ab_3p)+",\t";
+		currentStats += res.getString(R.string.ab_1p)+", In ,\t";
+		currentStats += res.getString(R.string.ab_2p)+", In ,\t";
+		currentStats += res.getString(R.string.ab_3p)+", In ,\t";
 		currentStats += res.getString(R.string.ab_p)+",\t";
-		currentStats += res.getString(R.string.ab_rb)+",\t";
+		currentStats += res.getString(R.string.ab_rb)+"F,B,\t";
 		currentStats += res.getString(R.string.ab_f)+",\t";
 		currentStats += res.getString(R.string.ab_to)+",\t";
 		currentStats += res.getString(R.string.ab_ass)+",\t";
