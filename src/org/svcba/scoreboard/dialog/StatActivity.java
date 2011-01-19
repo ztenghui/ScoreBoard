@@ -28,7 +28,7 @@ public class StatActivity extends Activity
 	public static final int HOME = 0;
 	public static final int AWAY = 1;
 	public String currentStats;
-	
+	public String emailTitle;
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -49,7 +49,6 @@ public class StatActivity extends Activity
 	
 	private List<Map<String, Object>> getStat(int side)
 	{
-		String finalString = new String();
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		Game game = ((SVCBAApp)getApplicationContext()).getGame();
 		Team team = null;
@@ -61,6 +60,18 @@ public class StatActivity extends Activity
 		{
 			team = game.getAwayTeam();
 		}
+		
+		emailTitle = new String();
+		// add team name and scores
+		emailTitle+=game.getHomeTeam().getName();
+		emailTitle+= " ";
+		emailTitle+= Integer.toString(game.getHomeScore());
+		emailTitle+= " VS. " ;
+		emailTitle+=  game.getAwayTeam().getName();
+		emailTitle+=  " ";
+		emailTitle+= Integer.toString(game.getAwayScore()) ;
+		emailTitle+=  " ";
+		
 		List<Action> actions = game.getActions();
 		Map<String, PlayerStat> players = new HashMap<String, PlayerStat>();
 		for (Map<String, Object> player : team.getAllPlayers())
@@ -206,17 +217,18 @@ public class StatActivity extends Activity
 	
 	public void onBackPressed()
 	{    
-	    
-		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);		 
-        emailIntent.setType("plain/text");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ztenghui@gmail.com;biomemsgao@gmail.com;greatsvcba@gmail.com"});
-
-        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Game Result " + getDateTime());
-
-        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, currentStats);
-
-        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-		
+	    //if ((!emailTitle.isEmpty()) && (!currentStats.isEmpty()))
+	    {
+			final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);		 
+	        emailIntent.setType("plain/text");
+	        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ztenghui@gmail.com;biomemsgao@gmail.com;greatsvcba@gmail.com"});
+	
+	        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, emailTitle + "Game Result " + getDateTime());
+	
+	        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, currentStats);
+	
+	        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+	    }
         finish();
 		super.onBackPressed();
 	}
