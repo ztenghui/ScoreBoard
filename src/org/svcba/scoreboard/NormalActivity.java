@@ -888,7 +888,11 @@ public class NormalActivity extends Activity
         lv.setOnItemLongClickListener( listener ) ;
 	}
 
-
+    public void onDestroy()
+    {
+    	super.onDestroy();
+    	_timer.cancel();
+    }
 	public void onBackPressed()
 	{
 
