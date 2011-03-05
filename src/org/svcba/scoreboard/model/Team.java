@@ -43,7 +43,7 @@ public class Team
 	
 	public List<Map<String, Object>> getOnCourt()
 	{
-		return _oncourt;
+		return _players;
 	}
 	
 	public List<Map<String, Object>> getOffCourt()
