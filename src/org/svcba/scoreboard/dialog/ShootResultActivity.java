@@ -7,6 +7,7 @@ import org.svcba.scoreboard.model.Game;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -26,8 +27,10 @@ public class ShootResultActivity extends Activity
 		setContentView(R.layout.dlg_shoot_result);
 		
 		Game game = ((SVCBAApp)getApplicationContext()).getGame();
+		
 		ImageView iv = (ImageView)findViewById(R.id.shoot_player_img);
-		iv.setImageResource((Integer)game.getTempAction().getPlayer().get("avator"));
+		if (iv!= null)
+			iv.setImageResource((Integer)game.getTempAction().getPlayer().get("avator"));
 		
 		
 		TextView tv = (TextView)findViewById(R.id.shoot_player_name);

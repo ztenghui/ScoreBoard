@@ -1,5 +1,6 @@
 package org.svcba.scoreboard.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +10,12 @@ import org.svcba.scoreboard.NormalActivity;
 
 import android.widget.Toast;
 
-public class Game
+public class Game implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static final public int GAME_NORMAL = 0;
 	static final public int GAME_PAUSE = 1;
 	static final public int GAME_OVER = 2;

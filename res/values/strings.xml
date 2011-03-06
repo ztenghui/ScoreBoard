@@ -173,7 +173,7 @@
 <color name="cl_score_lead">#FF0000</color>
 <color name="cl_score_behind">#00FF00</color>
 <string name="timeout">暂停</string>
-<string name="sub">换人</string>
+<string name="sub">保存</string>
 <string name="foul">犯规</string>
 <string name="shoot1">一分投篮</string>
 <string name="shoot2">二分投篮</string>
@@ -212,7 +212,7 @@
 <string name="go_on">继续比赛</string>
 <string name="ref_timeout">裁判暂停</string>
 <string name="undo">取消输入</string>
-<string name="stat_chart">图表统计</string>
+<string name="stat_chart">读取数据</string>
 <string name="err_not_implement">该功能未实现</string>
 <string name="steal">抢断</string>
 <string name="assist">助攻</string>

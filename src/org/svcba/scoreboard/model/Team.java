@@ -1,5 +1,6 @@
 package org.svcba.scoreboard.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,8 +8,12 @@ import java.util.Map;
 
 import org.svcba.scoreboard.R;
 
-public class Team
+public class Team implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private List<Map<String, Object>> _players;
 	private List<Map<String, Object>> _oncourt;
 	private List<Map<String, Object>> _offcourt;

@@ -1,9 +1,14 @@
 package org.svcba.scoreboard.model;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Action
+public class Action implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -990090120097041783L;
 	//.getResult
 	static final public int MISS = 0;
 	static final public int MADE = 1;

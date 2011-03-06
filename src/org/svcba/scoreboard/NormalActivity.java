@@ -1,5 +1,10 @@
 package org.svcba.scoreboard;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +31,7 @@ import org.svcba.scoreboard.model.Action;
 import org.svcba.scoreboard.model.Game;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -65,6 +71,8 @@ public class NormalActivity extends Activity
 	private Game _game;
 	private Timer _timer = new Timer(true);
 
+	private String filename = "gameData.dat";
+	//private Context currentContext = null;
 	private Handler _handler = new Handler()
 	{
 		@Override
@@ -95,6 +103,28 @@ public class NormalActivity extends Activity
 
 	};
 
+	private void showChart()
+	{
+		try {
+	        FileInputStream fis = openFileInput(filename );
+	        //GZIPInputStream gzis = new GZIPInputStream(fis);
+	        ObjectInputStream in = new ObjectInputStream(fis);
+	        Game readGame = (Game)in.readObject();
+	        in.close();
+	        _game = readGame;
+	        SVCBAApp app = (SVCBAApp)getApplicationContext();
+			app.setGame(_game);
+	        updateAction();
+	        updateScore();
+	        //updateTime();
+	        updateTimeoutFoul();
+	      }
+	      catch (Exception e) {
+	    	  e.printStackTrace();
+	          System.out.println(e);
+	      }
+	      
+	}
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -125,8 +155,22 @@ public class NormalActivity extends Activity
 		btn.setOnClickListener(new OnClickListener(){
 			public void onClick(View v)
 			{
-				Intent intent = new Intent(v.getContext(), ShootPlayerActivity.class);
-				startActivityForResult(intent, REQUEST_SUB_OFF);
+				try {
+			        FileOutputStream fos = openFileOutput(filename, MODE_WORLD_WRITEABLE );
+			        //GZIPOutputStream gzos = new GZIPOutputStream(fos);
+			        ObjectOutputStream out = new ObjectOutputStream(fos);
+			        out.writeObject(_game);
+			        out.flush();
+			        out.close();
+			     }
+			     catch (IOException e) {
+			    	 e.printStackTrace();
+			         System.out.println(e); 
+			     }
+				// Here we need to save the results. 
+				
+				//Intent intent = new Intent(v.getContext(), ShootPlayerActivity.class);
+				//startActivityForResult(intent, REQUEST_SUB_OFF);
 			}
 		});
 
@@ -274,9 +318,10 @@ public class NormalActivity extends Activity
 		}
 		else if (requestCode == REQUEST_SUB_OFF)
 		{
+			
 			if (resultCode == RESULT_OK)
 			{
-				Action action;
+/*				Action action;
 				action = createAction();
 				action.setAction(Action.SUB_OFF);
 				int team = data.getIntExtra("team", 0);
@@ -293,7 +338,7 @@ public class NormalActivity extends Activity
 				Intent intent = new Intent(this, OffCourtPlayerActivity.class);
 				intent.putExtra("team", team);
 				intent.putExtra("off", pos);
-				startActivityForResult(intent, REQUEST_SUB_ON);
+				startActivityForResult(intent, REQUEST_SUB_ON); */
 			}
 			else
 			{
@@ -897,7 +942,9 @@ public class NormalActivity extends Activity
 	{
 
 	}
-	private void showChart()
+    
+
+	/*private void showChart()
 	{
 		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
 		XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
@@ -974,5 +1021,5 @@ public class NormalActivity extends Activity
 		dataset.addSeries(awaydata);
 		Intent intent = ChartFactory.getLineChartIntent(this, dataset, renderer, getResources().getString(R.string.stat_chart));
 		startActivity(intent);
-	}
+	}*/
 }

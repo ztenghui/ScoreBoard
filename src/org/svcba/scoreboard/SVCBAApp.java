@@ -19,6 +19,10 @@ public class SVCBAApp extends Application
 	{
 		return _game;
 	}
+	public void setGame(Game game)
+	{
+		_game = game;
+	}
 	public Roster getRoster()
 	{
 		return _roster;
